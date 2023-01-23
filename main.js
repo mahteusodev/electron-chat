@@ -8,11 +8,15 @@ const createWindow = () => {
         height: 600,
         backgroundColor: '#fff',
         webPreferences: {
-            nodeIntegration: false
+            preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: false,
+            worldSafeExecuteJavaScript: true,
+            contextIsolation: true
         }
     });
 
     win.loadFile('index.html');
+    win.webContents.openDevTools();
 }
 
 if (isDev) {
@@ -23,13 +27,14 @@ if (isDev) {
 
 app.whenReady().then(() => {
     createWindow();
-    const notification = new Notification(
-        {title: 'Hello!',
-         body: 'Welcome to my app'
-        });
-    notification.show();
 });
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 });
+
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
