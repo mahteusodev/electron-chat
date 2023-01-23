@@ -1,2 +1,2 @@
 # electron-chat
-Chat app built using Electron
+Chat app built using Electron and React
