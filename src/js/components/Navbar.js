@@ -1,22 +1,33 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
-    return (
-        <div className="chat-navbar">
-            <nav className="chat-navbar-inner">
-                <div className="chat-navbar-inner-left">
-                    <a href="/" className="btn btn-outline-success ml-2">Settings</a>
-                </div>
-                <div className="chat-navbar-inner-right">
-                    <span className="logged-in-user">Hi User</span>
-                    <button
-                        onClick={() => { }}
-                        className="btn btn-sm btn-outline-danger ml-2">Logout</button>
-                    <button
-                        onClick={() => { }}
-                        className="btn btn-sm btn-outline-success ml-2">Login</button>
-                </div>
-            </nav>
+  const navigate = useNavigate();
+  
+  return (
+    <div className="chat-navbar">
+      <nav className="chat-navbar-inner">
+        <div className="chat-navbar-inner-left">
+          <button
+            onClick={() => navigate(-1)}
+            className='btn btn-outline-primary'>&#60;</button>
+          <button
+            onClick={() => navigate('/')}
+            className='btn btn-outline-primary'>Home</button>
+          <button
+            onClick={() => navigate('/settings')}
+            className="btn btn-outline-success ml-2">Settings</button>
         </div>
-    )
+        <div className="chat-navbar-inner-right">
+          <span className="logged-in-user">Hi User</span>
+          <button
+            onClick={() => navigate('/register')}
+            className="btn btn-outline-danger ml-2">Logout</button>
+          <button
+            onClick={() => navigate('/login')}
+            className="btn btn-outline-success ml-2">Login</button>
+        </div>
+      </nav>
+    </div>
+  )
 }
