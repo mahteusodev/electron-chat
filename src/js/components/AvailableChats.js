@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AvailableChats() {
+  const navigate = useNavigate();
   return (
     <div className="container-fluid">
       <div className="row mt-3">

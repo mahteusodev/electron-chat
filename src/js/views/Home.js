@@ -13,7 +13,7 @@ export default function Home() {
           <JoinedChats />
         </div>
         <div className="col-9 fh">
-          <ViewTitle />
+          <ViewTitle text={'Welcome User!'}/>
           <AvailableChats />
         </div>
       </div>
