@@ -1,14 +1,18 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import chatReducer from '../reducers/chats';
 
 export default function configureStore() {
 
-    const store = createStore(() => {
-        return{
-            message: 'Hello World',
-            data1: 'test',
-            data2: 'test2'
-        }
-    });
+    const middlewares = [
+        thunkMiddleware
+    ]
+
+    const store = createStore(
+        combineReducers({
+            chats: chatReducer
+        }),
+        applyMiddleware(...middlewares));
 
     return store;
 }

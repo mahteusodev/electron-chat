@@ -4,17 +4,22 @@ import ChatSearch from '../components/ChatSearch';
 import JoinedChats from '../components/JoinedChats';
 import ViewTitle from '../components/shared/ViewTitle';
 
-import { fetchChats } from '../api/chats';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchChats } from '../actions/chats';
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const chats = useSelector(({chats}) => chats.items)
 
   useEffect(() => {
-    fetchChats();
-  }, [])
+    dispatch(fetchChats())
+  }, [dispatch])
 
   return (
       <div className="row no-gutters fh">
         <div className="col-3 fh">
+          {JSON.stringify(chats)}
           <ChatSearch />
           <JoinedChats />
         </div>
