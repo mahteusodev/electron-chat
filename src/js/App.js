@@ -3,8 +3,7 @@ import { Provider } from 'react-redux';
 import Navbar from './components/Navbar';
 import Home from './views/Home';
 import Settings from './views/Settings';
-import Login from './views/Login';
-import Register from './views/Register';
+import Welcome from './views/Welcome';
 import Chat from './views/Chat';
 import configureStore from './store';
 
@@ -24,11 +23,10 @@ export default function App() {
         <Navbar />
         <div className='content-wrapper'>
           <Routes>
+            <Route path='/' exact element={<Welcome />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/settings' element={<Settings />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
             <Route path='/chat/:id' element={<Chat />} />
-            <Route path='/' element={<Home />} />
           </Routes>
         </div>
       </Router>

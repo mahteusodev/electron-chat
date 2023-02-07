@@ -19,13 +19,12 @@ export default function Home() {
   return (
       <div className="row no-gutters fh">
         <div className="col-3 fh">
-          {JSON.stringify(chats)}
           <ChatSearch />
-          <JoinedChats />
+          <JoinedChats chats={chats} />
         </div>
         <div className="col-9 fh">
           <ViewTitle text={'Welcome User!'}/>
-          <AvailableChats />
+          <AvailableChats chats={chats} />
         </div>
       </div>
   )
