@@ -28,12 +28,13 @@ export default function Navbar() {
               onClick={() => navigate('/')}
               className="btn btn-outline-success ml-2">Login</button>
             :
-            <div>
+            <>
+              <img className='avatar mr-2' src={user.avatar}></img>
               <span className="logged-in-user">Hi {user.username}</span>
               <button
                 onClick={() => dispatch(logout())}
-                className="btn btn-outline-danger ml-2">Logout</button>
-            </div>}
+                className="btn btn-outline-danger ml-4">Logout</button>
+            </>}
         </div>
       </nav>
     </div>
