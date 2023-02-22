@@ -43,8 +43,8 @@ function createAuthReducer() {
         return true;
       case 'AUTH_ON_ERROR':
       case 'AUTH_ON_SUCCESS':
-      case 'AUTH_REGISTER_SUCCESS':
-      case 'AUTH_LOGIN_SUCCESS':
+      case 'AUTH_REGISTER_ERROR':
+      case 'AUTH_LOGIN_ERROR':
         return false;
       default:
         return state;
