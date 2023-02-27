@@ -52,7 +52,7 @@ export default function RegisterForm() {
               className="form-control"
               id="password" />
           </div>
-          { error && <div className="alert alert-danger small">{error.message}</div>}
+          { error ? <div className="alert alert-danger small">{error.message}</div> : null }
           <button type="submit" className="btn btn-outline-primary">Register</button>
         </div>
       </form>
