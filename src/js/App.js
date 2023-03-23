@@ -12,36 +12,57 @@ import LoadingView from './components/shared/LoadingView';
 import {
   HashRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom';
 
-const ContentWrapper = ({children}) => <div className='content-wrapper'>{children}</div>
+const ContentWrapper = ({ children }) => <div className='content-wrapper'>{children}</div>
 
 function ChatApp() {
   const dispatch = useDispatch();
-  const isChecking = useSelector(({auth}) => auth.isChecking)
+  const isChecking = useSelector(({ auth }) => auth.isChecking)
 
   useEffect(() => {
     dispatch(listenToAuthChanges());
   }, [dispatch])
 
-  if(isChecking){
-    return(
+  if (isChecking) {
+    return (
       <LoadingView />
     )
   }
 
+  function AuthRoute({ children }) {
+    const user = useSelector(({ auth }) => auth.user);
+
+    return user ? children : <Navigate to='/' />
+  }
+
   return (
     <Router>
-      <Navbar />
-        <ContentWrapper>
+      <ContentWrapper>
         <Routes>
           <Route path='/' exact element={<Welcome />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/chat/:id' element={<Chat />} />
+          <Route path='/home' element={
+            <AuthRoute>
+              <Home />
+            </AuthRoute>
+          }
+          />
+          <Route path='/settings' element={
+            <AuthRoute>
+              <Settings />
+            </AuthRoute>
+          }
+          />
+          <Route path='/chat/:id' element={
+            <AuthRoute>
+              <Chat />
+            </AuthRoute>
+          }
+          />
         </Routes>
-        </ContentWrapper>
+      </ContentWrapper>
     </Router>
   )
 }

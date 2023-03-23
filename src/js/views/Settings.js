@@ -1,8 +1,10 @@
 import React from 'react';
+import BaseLayout from '../layouts/Base';
 
 export default function Settings() {
-    return(
-        <div className="centered-view">
+  return (
+    <BaseLayout>
+      <div className="centered-view">
         <div className="centered-container">
           <form className="centered-container-form">
             <div className="header">Adjust application settings</div>
@@ -32,7 +34,7 @@ export default function Settings() {
               </div>
               <button
                 type="button"
-                onClick={() => {}}
+                onClick={() => { }}
                 className="btn btn-danger">
                 Quit App
               </button>
@@ -40,5 +42,6 @@ export default function Settings() {
           </form>
         </div>
       </div>
-    )
+    </BaseLayout>
+  )
 }

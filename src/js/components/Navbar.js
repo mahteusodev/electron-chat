@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../actions/auth';
+import BackButton from './shared/BackButton';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -12,9 +13,7 @@ export default function Navbar() {
     <div className="chat-navbar">
       <nav className="chat-navbar-inner">
         <div className="chat-navbar-inner-left">
-          <button
-            onClick={() => navigate(-1)}
-            className='btn btn-outline-primary'>&#60;</button>
+          <BackButton />
           <button
             onClick={() => navigate('/')}
             className='btn btn-outline-primary'>Home</button>
