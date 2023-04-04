@@ -1,9 +1,8 @@
 import React from 'react';
-import BaseLayout from '../layouts/Base';
+import { withBaseLayout } from '../layouts/Base';
 
-export default function Settings() {
+function Settings() {
   return (
-    <BaseLayout>
       <div className="centered-view">
         <div className="centered-container">
           <form className="centered-container-form">
@@ -42,6 +41,7 @@ export default function Settings() {
           </form>
         </div>
       </div>
-    </BaseLayout>
   )
 }
+
+export default withBaseLayout(Settings);

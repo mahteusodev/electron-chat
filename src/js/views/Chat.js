@@ -3,12 +3,11 @@ import { useParams } from 'react-router-dom';
 import ChatMessages from '../components/ChatMessages';
 import ChatUserList from '../components/ChatUserList';
 import ViewTitle from '../components/shared/ViewTitle';
-import BaseLayout from '../layouts/Base';
+import { withBaseLayout } from '../layouts/Base';
 
-export default function Chat() {
+function Chat() {
   const { id } = useParams();
   return (
-    <BaseLayout>
       <div className='content-wrapper'>
         <div className="row no-gutters fh">
           <div className="col-3 fh">
@@ -20,6 +19,7 @@ export default function Chat() {
           </div>
         </div>
       </div>
-    </BaseLayout>
   )
 }
+
+export default withBaseLayout(Chat);
