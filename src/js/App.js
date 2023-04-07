@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from './components/Navbar';
 import Home from './views/Home';
 import Settings from './views/Settings';
 import Welcome from './views/Welcome';
@@ -8,6 +7,7 @@ import Chat from './views/Chat';
 import { listenToAuthChanges } from './actions/auth';
 import StoreProvider from './store/StoreProvider';
 import LoadingView from './components/shared/LoadingView';
+import { listenToConnectionChanges } from './actions/app';
 
 import {
   HashRouter as Router,
@@ -20,11 +20,23 @@ const ContentWrapper = ({ children }) => <div className='content-wrapper'>{child
 
 function ChatApp() {
   const dispatch = useDispatch();
-  const isChecking = useSelector(({ auth }) => auth.isChecking)
+  const isChecking = useSelector(({ auth }) => auth.isChecking);
+  const isOnline = useSelector(({ app }) => app.isOnline)
 
   useEffect(() => {
-    dispatch(listenToAuthChanges());
+    const unsubFromAuth = dispatch(listenToAuthChanges());
+    const unsubFromConnection = dispatch(listenToConnectionChanges());
+
+    return function() {
+      unsubFromAuth();
+      unsubFromConnection();
+    }
+
   }, [dispatch])
+
+  if(!isOnline) {
+    return <LoadingView message='Disconnected. Please reconnect to internet.' />
+  }
 
   if (isChecking) {
     return (
