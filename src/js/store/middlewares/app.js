@@ -1,9 +1,14 @@
+import Notification from '../../utils/notifications'
+
 export default store => next => action => {
     const state = store.getState();
-    switch(action.type){
+    switch (action.type) {
         case 'APP_IS_ONLINE':
         case 'APP_IS_OFFLINE': {
-            alert('Notification');
+            Notification.show({
+                title: 'Connection status:',
+                body: action.isOnline ? 'Online' : 'Offline'
+            })
         }
     }
     next(action);
