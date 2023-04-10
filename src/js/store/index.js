@@ -8,8 +8,9 @@ import appMiddleware from './middlewares/app';
 export default function configureStore() {
 
     const middlewares = [
-        thunkMiddleware,
-        appMiddleware
+        thunkMiddleware
+        // <- Activate this to display a connection status notification ->
+        // appMiddleware
     ]
 
     const store = createStore(

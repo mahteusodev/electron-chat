@@ -4,9 +4,10 @@ import Home from './views/Home';
 import Settings from './views/Settings';
 import Welcome from './views/Welcome';
 import Chat from './views/Chat';
-import { listenToAuthChanges } from './actions/auth';
+import ChatCreate from './views/ChatCreate';
 import StoreProvider from './store/StoreProvider';
 import LoadingView from './components/shared/LoadingView';
+import { listenToAuthChanges } from './actions/auth';
 import { listenToConnectionChanges } from './actions/app';
 
 import {
@@ -64,6 +65,12 @@ function ChatApp() {
           <Route path='/settings' element={
             <AuthRoute>
               <Settings />
+            </AuthRoute>
+          }
+          />
+          <Route path='/chatCreate' element={
+            <AuthRoute>
+              <ChatCreate />
             </AuthRoute>
           }
           />
