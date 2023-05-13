@@ -9,7 +9,7 @@ export default function JoinedChats({ chats }) {
         {
           chats.map(chat =>
             <li
-              key={chat.id}
+              key={chat.name}
               onClick={() => { navigate(`/chat/${chat.id}`) }}
               className="item">
               <div className="item-status">

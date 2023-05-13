@@ -35,7 +35,7 @@ export default function ChatUserList() {
                 onClick={() => { }}
                 className="item">
                 <div className="item-status">
-                  <img src="https://i.dlpng.com/static/png/7105396_preview.png" alt="Retail Admin" />
+                  <img src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png" alt="Retail Admin" />
                   <span className="status online"></span>
                 </div>
                 <p className="name-time">
@@ -46,7 +46,7 @@ export default function ChatUserList() {
                 onClick={() => { }}
                 className="item">
                 <div className="item-status">
-                  <img src="https://i.dlpng.com/static/png/7105396_preview.png" alt="Retail Admin" />
+                  <img src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png" alt="Retail Admin" />
                   <span className="status online"></span>
                 </div>
                 <p className="name-time">

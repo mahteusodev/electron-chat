@@ -13,7 +13,7 @@ export default function AvailableChats({ chats }) {
         {
           chats.map(chat =>
             <div
-              key={chat.id}
+              key={chat.name}
               className="col-lg-3 col-md-6 mb-3">
               <div className="card">
                 <div className="card-body">
