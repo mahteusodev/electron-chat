@@ -14,7 +14,7 @@ import Notification from '../utils/notifications';
 
 function Home() {
   const dispatch = useDispatch();
-  const chats = useSelector(({ chats }) => chats.items)
+  // const chats = useSelector(({ chats }) => chats.items)
 
   useEffect(() => {
     Notification.setup();
@@ -25,13 +25,13 @@ function Home() {
     <div className="row no-gutters fh">
       <div className="col-3 fh">
         <ChatSearch />
-        <JoinedChats chats={chats} />
+        <JoinedChats chats={[]} />
       </div>
       <div className="col-9 fh">
         <ViewTitle text={'Welcome User!'}>
           <Link className='btn btn-primary' to='/chatCreate'>Create Chat</Link>
         </ViewTitle>
-        <AvailableChats chats={chats} />
+        <AvailableChats chats={[]} />
       </div>
     </div>
   )
